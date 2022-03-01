@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
-import data from "../../public/Data/MOCK_DATA.json";
+import data from "../../../public/Data/MOCK_DATA.json";
+import CardProfile from "../../../component/CardProfile";
+import styles from "../../../styles/Country.module.css";
 
 const CountryList = () => {
   const router = useRouter();
@@ -8,12 +10,11 @@ const CountryList = () => {
 
   console.log(filterData);
   return (
-    <>
-      <h1>{router.query.country}</h1>
+    <div className={styles.grid}>
       {filterData.map((d) => (
-        <h3 key={d.id}>{d.first_name}</h3>
+        <CardProfile key={d.id} info={d} />
       ))}
-    </>
+    </div>
   );
 };
 
